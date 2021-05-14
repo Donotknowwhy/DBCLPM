@@ -72,7 +72,7 @@ function index(props) {
                         Cấu hình
                     </a>
                 </Menu.Item>
-                <Button onClick={() => logout()}>logout</Button>
+                <Button onClick={() => logout()}>Đăng xuất</Button>
             </Menu>
             
             </Col>

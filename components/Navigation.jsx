@@ -41,7 +41,7 @@ export default function Navigation(){
               </a>
             </Menu.Item>
             </Menu>
-            <Button>logout</Button>
+            <Button>Đăng xuất</Button>
           </Col>
 
         <Col xs={24} sm={24} md={0}>
