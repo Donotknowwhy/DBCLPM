@@ -186,22 +186,23 @@ function index() {
               style={{ marginTop: "10px" }}
               type="primary"
               icon={<SearchOutlined />}
+              disabled={
+                wardChoose && cityChoose && districtChoose ? false : true
+              }
               onClick={searchData}
             >
               Tìm
             </Button>
-
             <br />
             <table className={styles.table}>
               <tr className={styles.tr}>
                 <th className={styles.th}>Name</th>
-                <th className={styles.th}>BirthDay</th>
                 <th className={styles.th}>Join date</th>
                 <th className={styles.th}>Position</th>
                 <th className={styles.th}>Address</th>
                 <th className={styles.th}>Salary</th>
               </tr>
-              {data &&
+              {data.length !== 0 &&
                 data.map((item) => {
                   const ngaySinh = new Date(item.birthday);
                   const ngay =
@@ -211,27 +212,26 @@ function index() {
                     "-" +
                     ngaySinh.getFullYear();
                   console.log(ngay);
+
                   return (
                     <tr key={item.id}>
                       <th className={styles.th}>
-                        {item ? item.name : "No data"}
+                        {item.name}
+                      </th>
+                      <th className={styles.th}>{ngay}</th>
+                      <th className={styles.th}>
+                        {item.position}
                       </th>
                       <th className={styles.th}>
-                        {item ? item.phone : "No data"}
-                      </th>
-                      <th className={styles.th}>aa</th>
-                      <th className={styles.th}>
-                        {item ? item.position : "No data"}
+                        {item.address}
                       </th>
                       <th className={styles.th}>
-                        {item ? item.address : "No data"}
-                      </th>
-                      <th className={styles.th}>
-                        {item ? item.salary : "No data"}
+                        {item.salary}
                       </th>
                     </tr>
                   );
-                })}
+                })
+                }
               {load == true && <Skeleton active />}
             </table>
           </Space>

@@ -59,8 +59,23 @@ function index() {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
-  const [value1, setValue1] = useState(1999);
-  const [value2, setValue2] = useState(10);
+  const [value1, setValue1] = useState("");
+  const [value2, setValue2] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("https://sqa-10-backend.herokuapp.com/api/v1/annual/")
+      .then((res) => {
+        console.log(res.data);
+        setValue1(res.data.year);
+        setValue2(res.data.adjustment);
+      });
+  }, []);
+
+  useEffect(() => {
+    setValue1(value1);
+    setValue2(value2);
+  }, [value1 || value2]);
 
   const showModal = () => {
     setVisible(true);
@@ -133,33 +148,34 @@ function index() {
                 <Form.Item label="Năm" name="year">
                   <InputNumber
                     min={1900}
-                    max={2100}
+                    max={3000}
                     defaultValue={value1}
                     onChange={onChange1}
                     value={value1}
                   />
+                  <p className="no-display">{value1}</p>
                 </Form.Item>
 
                 <Form.Item label="%" name="percent">
                   <InputNumber
+                    min={0}
+                    max={100}
                     defaultValue={value2}
                     onChange={onChange2}
                     value={value2}
-                    min={0}
-                    max={100}
                     formatter={(value) => `${value}%`}
                     parser={(value) => value.replace("%", "")}
                   />
+                  <p className="no-display">{value1}</p>
                 </Form.Item>
                 <Button
                   type="primary"
                   htmlType="submit"
+                  disabled={value1 && value2 ? false : true}
                   onClick={showPromiseConfirm}
                 >
                   Gửi đi
                 </Button>
-
-                <Form.Item></Form.Item>
               </Form>
             </TabPane>
             <TabPane tab="Mức lương thấp nhất khi tham gia" key="2">
