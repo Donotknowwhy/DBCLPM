@@ -228,6 +228,9 @@ function index() {
         >
           <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane tab="Mức thay đổi hàng năm" key="1">
+              <ModalUpdate />
+            </TabPane>
+            <TabPane tab="Mức lương thấp nhất khi tham gia" key="2">
               <Form
                 {...layout}
                 name="basic"
@@ -269,9 +272,6 @@ function index() {
                   Gửi đi
                 </Button>
               </Form>
-            </TabPane>
-            <TabPane tab="Mức lương thấp nhất khi tham gia" key="2">
-              <ModalUpdate />
             </TabPane>
           </Tabs>
         </Content>
