@@ -21,7 +21,7 @@ function Login() {
         // Handle Errors here.
         const errorMessage = error.message;
         // ...
-        window.alert('Error' + errorMessage);
+        window.alert(errorMessage);
       });
 
   return (
