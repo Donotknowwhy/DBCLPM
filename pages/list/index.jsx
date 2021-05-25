@@ -17,6 +17,7 @@ import {
 import styles from "./index.module.scss";
 import { AudioOutlined, SearchOutlined } from "@ant-design/icons";
 import axios from "axios";
+import Head from 'next/head'
 
 const { Content } = Layout;
 const { Search } = Input;
@@ -115,6 +116,10 @@ function index() {
 
   return (
     <div>
+    <Head>
+        <title>Xem danh sách</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Main>
         <Content
           className={styles.siteLayout}
@@ -171,7 +176,7 @@ function index() {
             </Select>
 
             <Button
-              style={{ marginTop: "15px" }}
+              style={{ marginTop: "15px", 'width': '100%' }}
               type="primary"
               icon={<SearchOutlined />}
               disabled={

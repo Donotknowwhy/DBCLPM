@@ -6,6 +6,7 @@ import {signIn} from '../../api/firebase-client';
 import styles from './index.module.scss';
 import PublicLayout from '../../layouts/PublicLayout';
 import Link from 'next/link';
+import Head from 'next/head'
 
 function Login() {
   const router = useRouter();
@@ -25,6 +26,10 @@ function Login() {
 
   return (
     <PublicLayout>
+      <Head>
+        <title>Đăng nhập</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div>
         <h2 className={styles.formTitle}>Login</h2>
         <Form

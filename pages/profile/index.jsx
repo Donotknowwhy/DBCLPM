@@ -21,7 +21,7 @@ import { EditOutlined } from "@ant-design/icons";
 import axios from "axios";
 import styles from "./index.module.scss";
 import ModalUpdate from "../../components/profileComponents/ModalUpdate";
-
+import Head from 'next/head'
 const { Content } = Layout;
 const { TabPane } = Tabs;
 const { confirm } = Modal;
@@ -221,6 +221,10 @@ function index() {
 
   return (
     <div>
+    <Head>
+        <title>Cấu hình</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Main>
         <Content
           className={styles.siteLayout}
@@ -231,6 +235,7 @@ function index() {
               <ModalUpdate />
             </TabPane>
             <TabPane tab="Mức lương thấp nhất khi tham gia" key="2">
+              <p>(*): Giá trị hiện tại đã thiết lập</p>
               <Form
                 {...layout}
                 name="basic"
@@ -240,7 +245,7 @@ function index() {
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
               >
-                <Form.Item label="Năm" name="year">
+                <Form.Item label="Năm*" name="year">
                   <InputNumber
                     min={1900}
                     max={3000}
@@ -251,7 +256,7 @@ function index() {
                   <p className="no-display">{value1}</p>
                 </Form.Item>
 
-                <Form.Item label="%" name="percent">
+                <Form.Item label="%*" name="percent">
                   <InputNumber
                     min={0}
                     max={100}
