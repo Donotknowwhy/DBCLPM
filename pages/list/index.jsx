@@ -176,7 +176,7 @@ function index() {
             </Select>
 
             <Button
-              style={{ marginTop: "15px", 'width': '100%' }}
+              style={{ marginTop: "15px", 'width': '350px' }}
               type="primary"
               icon={<SearchOutlined />}
               disabled={
