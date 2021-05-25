@@ -226,7 +226,7 @@ function index() {
           className={styles.siteLayout}
           style={{ padding: "0 50px", marginTop: 64 }}
         >
-          <Tabs defaultActiveKey="2" onChange={callback}>
+          <Tabs defaultActiveKey="1" onChange={callback}>
           <TabPane tab="Mức thay đổi hàng năm" key="1">
               <Form
                 {...layout}
