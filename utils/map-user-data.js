@@ -13,9 +13,10 @@ export const mapRefreshToken = (user) => {
 };
 
 export const mapUserData = (user) => {
-  const {email, photoURL} = user;
+  const {email, photoURL, displayName} = user;
   return {
     email,
     photoURL,
+    displayName
   };
 };

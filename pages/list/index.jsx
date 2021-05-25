@@ -12,6 +12,7 @@ import {
   Row,
   Col,
   Typography,
+  Card,
 } from "antd";
 import styles from "./index.module.scss";
 import { AudioOutlined, SearchOutlined } from "@ant-design/icons";
@@ -124,66 +125,53 @@ function index() {
             <Text>Tìm kiếm theo: </Text>
             <Select
               showSearch
-              style={{ width: 200, marginTop: "10px", width: "350px" }}
+              style={{ width: 200, marginTop: "20px", width: "350px" }}
               placeholder="Chọn thành phố"
               optionFilterProp="children"
               onChange={onChange}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
             >
               {city &&
                 city.map((items) => (
                   <div key={items.province_name}>
+                    <Option value={items.province_name}></Option>
                     {items.province_name}
-                    <Option value={items.province_name}>
-                      {items.province_name}
-                    </Option>
                   </div>
                 ))}
             </Select>
 
             <Select
               showSearch
-              style={{ width: 200, marginTop: "10px", width: "350px" }}
+              style={{ width: 200, marginTop: "15px", width: "350px" }}
               placeholder="Chọn quận"
               optionFilterProp="children"
               onChange={onChangeQ}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
             >
               {district &&
                 district.map((items) => (
                   <div key={items.district_name}>
                     {items.district_name}
-                    <Option value={items.district_name}>
-                      {items.district_name}
-                    </Option>
+                    <Option value={items.district_name}></Option>
                   </div>
                 ))}
             </Select>
             <Select
               showSearch
-              style={{ width: 200, marginTop: "10px", width: "350px" }}
+              style={{ width: 200, marginTop: "15px", width: "350px" }}
               placeholder="Chọn phường"
               optionFilterProp="children"
               onChange={onChangeH}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
             >
               {ward &&
                 ward.map((items) => (
                   <div key={items.ward_name}>
                     {items.ward_name}
-                    <Option value={items.ward_name}>{items.ward_name}</Option>
+                    <Option value={items.ward_name}></Option>
                   </div>
                 ))}
             </Select>
 
             <Button
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "15px" }}
               type="primary"
               icon={<SearchOutlined />}
               disabled={
@@ -215,25 +203,25 @@ function index() {
 
                   return (
                     <tr key={item.id}>
-                      <th className={styles.th}>
-                        {item.name}
-                      </th>
+                      <th className={styles.th}>{item.name}</th>
                       <th className={styles.th}>{ngay}</th>
-                      <th className={styles.th}>
-                        {item.position}
-                      </th>
-                      <th className={styles.th}>
-                        {item.address}
-                      </th>
-                      <th className={styles.th}>
-                        {item.salary}
-                      </th>
+                      <th className={styles.th}>{item.position}</th>
+                      <th className={styles.th}>{item.address}</th>
+                      <th className={styles.th}>{item.salary}</th>
                     </tr>
                   );
-                })
-                }
-              {load == true && <Skeleton active />}
+                })}
             </table>
+            {load == true && (
+              <Card
+                style={{
+                  width: 353,
+                }}
+              >
+                {" "}
+                <Skeleton active />
+              </Card>
+            )}
           </Space>
         </Content>
       </Main>

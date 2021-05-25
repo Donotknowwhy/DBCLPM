@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../../components/Navigation";
 import Main from "../../components";
+
+
 import {
   Layout,
   Input,
@@ -10,10 +12,15 @@ import {
   Form,
   Button,
   Modal,
+  Row,
+  Col,
   notification,
 } from "antd";
+
+import { EditOutlined } from "@ant-design/icons";
 import axios from "axios";
 import styles from "./index.module.scss";
+import ModalUpdate from "../../components/profileComponents/ModalUpdate";
 
 const { Content } = Layout;
 const { TabPane } = Tabs;
@@ -57,10 +64,19 @@ function index() {
   };
 
   const [visible, setVisible] = React.useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [salary, setSalary] = useState("");
+  const [id, setId] = useState("");
+  const [area, setArea] = useState("");
+  const [type, setType] = useState("");
+
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
+  const [data, setData] = useState("");
+  const [load, setLoad] = useState(true);
+
 
   useEffect(() => {
     axios
@@ -72,12 +88,10 @@ function index() {
       });
   }, []);
 
-  useEffect(() => {
-    setValue1(value1);
-    setValue2(value2);
-  }, [value1 || value2]);
+
 
   const showModal = () => {
+    setIsModalVisible(true);
     setVisible(true);
   };
 
@@ -85,9 +99,10 @@ function index() {
     setConfirmLoading(true);
     console.log(value2 + " " + value1);
     axios
-      .post(
-        `https://sqa-10-backend.herokuapp.com/api/v1/annual/?adjustment=${value2}&year=${value1}`
-      )
+      .post(`https://sqa-10-backend.herokuapp.com/api/v1/annual/`, {
+        year: value1,
+        adjustment: value2,
+      })
       .then((res) => {
         openNotification();
       });
@@ -98,8 +113,8 @@ function index() {
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setVisible(false);
+    setIsModalVisible(false);
   };
 
   const showPromiseConfirm = () => {
@@ -117,6 +132,74 @@ function index() {
     });
   };
 
+  const updateSalary = (id,area,type,salary) => {
+    axios
+      .put("https://sqa-10-backend.herokuapp.com/api/v1/minsalary/", {
+        id,
+        area,
+        type,
+        salary,
+      })
+      .then(() => {
+        console.log(salary)
+        console.log("update salary success");
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const modalUpdate = () => {
+    confirm({
+      title: "Thay đổi số tiền lương",
+      content: (
+        <div>
+          <Input style={{ marginLeft: "10px" }} disabled value={id} />
+          <br />
+          <br />
+          <Input
+            style={{ marginLeft: "10px" }}
+            disabled
+            value={area.split(" ")[1]}
+          />
+          <br />
+          <br />
+          <Input style={{ marginLeft: "10px" }} disabled value={type} />
+          <br />
+
+          <br />
+
+          <Form.Item
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+            validateMessages={validateMessages}
+          >
+            <InputNumber
+              style={{ marginLeft: "10px", width: "100%" }}
+              min={0}
+              max={999999999}
+              value={salary}
+              placeholder="Tiền lương"
+              onChange={onChangeSalary}
+            />
+          </Form.Item>
+        </div>
+      ),
+      okText: "Đồng ý",
+      cancelText: "Hủy",
+
+      onOk() {
+        updateSalary(id,type,area,salary);
+      },
+      onCancel() {
+        handleCancel();
+      },
+    });
+    // updateSalary();
+    // setIsModalVisible(false);
+  };
+
   function onChange1(value) {
     console.log("changed", value);
     setValue1(value);
@@ -127,6 +210,15 @@ function index() {
     setValue2(value);
   }
 
+  function onChangeSalary(value) {
+    console.log(value)
+    setSalary(value);
+  }
+
+  const validateMessages = {
+    required: "Không được bỏ trống trường này",
+  };
+
   return (
     <div>
       <Main>
@@ -134,8 +226,8 @@ function index() {
           className={styles.siteLayout}
           style={{ padding: "0 50px", marginTop: 64 }}
         >
-          <Tabs defaultActiveKey="1" onChange={callback}>
-            <TabPane tab="Mức thay đổi hàng năm" key="1">
+          <Tabs defaultActiveKey="2" onChange={callback}>
+          <TabPane tab="Mức thay đổi hàng năm" key="1">
               <Form
                 {...layout}
                 name="basic"
@@ -179,7 +271,7 @@ function index() {
               </Form>
             </TabPane>
             <TabPane tab="Mức lương thấp nhất khi tham gia" key="2">
-              Content of Tab Pane 2
+              <ModalUpdate />
             </TabPane>
           </Tabs>
         </Content>
