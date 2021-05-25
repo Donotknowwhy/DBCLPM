@@ -189,11 +189,11 @@ function index() {
             <br />
             <table className={styles.table}>
               <tr className={styles.tr}>
-                <th className={styles.th}>Name</th>
-                <th className={styles.th}>Join date</th>
-                <th className={styles.th}>Position</th>
-                <th className={styles.th}>Address</th>
-                <th className={styles.th}>Salary</th>
+                <th className={styles.th}>Tên</th>
+                <th className={styles.th}>Ngày tham gia</th>
+                <th className={styles.th}>Vị trí</th>
+                <th className={styles.th}>Địa chỉ</th>
+                <th className={styles.th}>Tiền lương</th>
               </tr>
               {data.length !== 0 &&
                 data.map((item) => {
