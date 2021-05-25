@@ -31,7 +31,9 @@ function ModalUpdate() {
   const [visible, setVisible] = React.useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [salary, setSalary] = useState("");
-  const [salaryNew, setSalaryNew] = useState('')
+  const [change, setChange] = useState('')
+  
+  let salaryNew = ""
 
 
   const [id, setId] = useState("");
@@ -55,15 +57,6 @@ function ModalUpdate() {
       });
   }, []);
 
-  // useEffect(() =>{
-  //   axios
-  //     .get("https://sqa-10-backend.herokuapp.com/api/v1/minsalary/")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setData(res.data);
-  //       setLoad(false);
-  //     });
-  // },[salary])
 
   const handleCancel = () => {
     setVisible(false);
@@ -79,13 +72,12 @@ function ModalUpdate() {
         salary : salaryNew,
       })
       .then(() => {
-        console.log(salary);
         console.log("update salary success");
       })
       .catch((error) => console.log(error));
   };
 
-  const modalUpdate = (id, area, type, salary) => {
+  const modalUpdate = (id, area, type) => {
     confirm({
       title: "Thay đổi số tiền lương",
       content: (
@@ -117,7 +109,7 @@ function ModalUpdate() {
               style={{ marginLeft: "10px", width: "100%" }}
               min={0}
               max={999999999}
-              value={salary}
+              value={salaryNew}
               placeholder="Tiền lương"
               onChange={onChangeSalary}
             />
@@ -129,16 +121,18 @@ function ModalUpdate() {
 
       onOk() {
         updateSalary(id, area, type, salaryNew);
+        setTimeout(window.location.reload.bind(window.location), 1000);
       },
       onCancel() {
         handleCancel();
+        
       },
     });
   };
 
   function onChangeSalary(value) {
     console.log(value);
-    setSalary(value);
+    salaryNew = value
   }
 
   function onChange1(value) {
@@ -178,16 +172,11 @@ function ModalUpdate() {
                 <Button
                   type="primary"
                   icon={<EditOutlined />}
-                  onClick={ async() => {
-                    // console.log(item.salary);
-                    // setId(item.id);
-                    // setArea(item.area);
-                    // setType(item.type);
-                    // setSalary(item.salary);
-                    console.log(item.salary);
-                    setSalaryNew(item.salary)
+                  onClick={() => {
+                    salaryNew = item.salary
                     console.log(salaryNew)
-                    modalUpdate(item.id, item.area, item.type, item.salary );
+                    setChange(item.salary);
+                    modalUpdate(item.id, item.area, item.type );
                   }}
                 >
                   Chỉnh sửa
