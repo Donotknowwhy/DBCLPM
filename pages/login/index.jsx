@@ -15,7 +15,7 @@ function Login() {
 
   const login = () => signIn(email, password)
       .then(() => {
-        router.push('/list');
+        router.push('/');
       })
       .catch(function(error) {
         // Handle Errors here.
