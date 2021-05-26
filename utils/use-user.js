@@ -52,17 +52,17 @@ const useUser = () => {
     });
 
     const AccessToken = getAccessToken();
-    // if (!AccessToken) {
-    //   router.push('/login');
-    //   return;
-    // }
+    if (!AccessToken) {
+      router.push('/login');
+      return;
+    }
     setUser(AccessToken);
 
     const RefreshToken = getRefreshToken();
-    // if (!RefreshToken) {
-    //   router.push('/login');
-    //   return;
-    // }
+    if (!RefreshToken) {
+      router.push('/login');
+      return;
+    }
     setUser(RefreshToken);
 
 
