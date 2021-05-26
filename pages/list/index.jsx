@@ -170,13 +170,14 @@ function index() {
                 ward.map((items) => (
                   <div key={items.ward_name}>
                     {items.ward_name}
-                    <Option value={items.ward_name}></Option>
+                    <Option value={items.id}></Option>
                   </div>
                 ))}
             </Select>
 
             <Button
               style={{ marginTop: "15px", 'width': '350px' }}
+              className="btn-search-list"
               type="primary"
               icon={<SearchOutlined />}
               disabled={

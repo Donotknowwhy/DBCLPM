@@ -17,7 +17,7 @@ const firebaseAuthConfig = {
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     firebase.auth.GithubAuthProvider.PROVIDER_ID,
   ],
-  signInSuccessUrl: '/',
+  signInSuccessUrl: '/list',
   credentialHelper: 'none',
   callbacks: {
     signInSuccessWithAuthResult: async ({user}, redirectUrl) => {

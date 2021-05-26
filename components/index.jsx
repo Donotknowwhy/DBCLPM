@@ -14,16 +14,16 @@ function index(props) {
   const content = (
     <Menu>
       <Menu.Item key="0">
-        <a href="/">Trang chủ</a>
+        <a id="#index" href="/">Trang chủ</a>
       </Menu.Item>
       <Menu.Item key="1">
-        <a href="/list">Xem danh sách</a>
+        <a id="#list" href="/list">Xem danh sách</a>
       </Menu.Item>
       <Menu.Item key="3">
-        <a href="/report">Xuất báo cáo</a>
+        <a id="report" href="/report">Xuất báo cáo</a>
       </Menu.Item>
       <Menu.Item key="3">
-        <a href="/profile">Cấu hình</a>
+        <a id="profile" href="/profile">Cấu hình</a>
       </Menu.Item>
     </Menu>
   );
@@ -31,7 +31,7 @@ function index(props) {
   const menu = (
     <Menu>
       <Menu.Item key="0">
-        <a href="#">Trang cá nhân</a>
+        <a  href="#">Trang cá nhân</a>
       </Menu.Item>
       <Menu.Item key="1">
         <a href="#">Cài đặt</a>
@@ -54,16 +54,16 @@ function index(props) {
             <Col xs={0} sm={0} md={24}>
               <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
                 <Menu.Item key="4">
-                  <a href="/">Trang chủ</a>
+                  <a id="index" href="/">Trang chủ</a>
                 </Menu.Item>
                 <Menu.Item key="1">
-                  <a href="/list">Xem danh sách</a>
+                  <a id="list" href="/list">Xem danh sách</a>
                 </Menu.Item>
                 <Menu.Item key="2">
-                  <a href="/report">Xuất báo cáo</a>
+                  <a id="report" href="/report">Xuất báo cáo</a>
                 </Menu.Item>
                 <Menu.Item key="3">
-                  <a href="/profile">Cấu hình</a>
+                  <a id="profile" href="/profile">Cấu hình</a>
                 </Menu.Item>
                 
                 <Dropdown overlay={menu} placement="bottomCenter">

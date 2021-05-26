@@ -13,16 +13,21 @@ function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const login = () => signIn(email, password)
-      .then(() => {
-        router.push('/');
-      })
-      .catch(function(error) {
-        // Handle Errors here.
-        const errorMessage = error.message;
-        // ...
-        window.alert(errorMessage);
-      });
+  // const login = () => signIn(email, password)
+  //     .then(() => {
+  //       router.push('/list');
+  //     })
+  //     .catch(function(error) {
+  //       // Handle Errors here.
+  //       const errorMessage = error.message;
+  //       // ...
+  //       window.alert(errorMessage);
+  //     });
+
+  const login = () => {
+    router.push('/')
+  }
+
 
   return (
     <PublicLayout>
