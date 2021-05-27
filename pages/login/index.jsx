@@ -36,7 +36,7 @@ function Login() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
-        <h2 className={styles.formTitle}>Login</h2>
+        <h2 className={styles.formTitle}>Đăng nhập</h2>
         <Form
           name="normal_login"
           className="login-form"
@@ -46,7 +46,7 @@ function Login() {
           <Form.Item
             name="email"
             rules={[
-              {required: true, message: 'Please input your Email!'},
+              {required: true, message: 'Không được để trống trường này'},
             ]}
           >
             <Input
@@ -58,7 +58,7 @@ function Login() {
           <Form.Item
             name="password"
             rules={[
-              {required: true, message: 'Please input your Password!'},
+              {required: true, message: 'Không được để trống trường này'},
             ]}
           >
             <Input
@@ -70,7 +70,7 @@ function Login() {
           </Form.Item>
 
           <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox>Ghi nhớ</Checkbox>
           </Form.Item>
 
           <Form.Item>
@@ -82,7 +82,7 @@ function Login() {
                 block
                 onClick={login}
               >
-                Log in
+                Đăng nhập
               </Button>
             </Row>
           </Form.Item>
@@ -90,16 +90,16 @@ function Login() {
         <Row>
           <Col span={12}>
             <Link href="/#" variant="body2">
-              <a>Forgot password?</a>
+              <a>Quên mật khẩu?</a>
             </Link>
           </Col>
           <Col span={12}>
             <div>
               <span className={styles.formReg}>
-                {'Don\'t have an account? '}
+                {'Chưa có tài khoản? '}
               </span>
               <Link href="/#" variant="body2">
-                <a>Register</a>
+                <a>Đăng kí ngay</a>
               </Link>
             </div>
           </Col>
@@ -107,7 +107,7 @@ function Login() {
         <Row className={styles.formContainer}>
           <div className={styles.formDivSpan}>
             <span className={styles.formSpan}>
-              Or
+              Hoặc
             </span>
           </div>
         </Row>
