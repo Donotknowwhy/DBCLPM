@@ -56,14 +56,14 @@ function Login() {
             />
           </Form.Item>
           <Form.Item
-            name="Mật khẩu"
+            name="password"
             rules={[
               {required: true, message: 'Không được để trống trường này'},
             ]}
           >
             <Input
               type="password"
-              placeholder="Password"
+              placeholder="Mật khẩu"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
