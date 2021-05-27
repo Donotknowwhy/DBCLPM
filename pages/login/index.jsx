@@ -56,7 +56,7 @@ function Login() {
             />
           </Form.Item>
           <Form.Item
-            name="password"
+            name="Mật khẩu"
             rules={[
               {required: true, message: 'Không được để trống trường này'},
             ]}
