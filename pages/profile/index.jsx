@@ -123,6 +123,7 @@ function index() {
       content: "Bạn có chắc chắn muốn lưu lại sự thay đổi này không?",
       okText: "Đồng ý",
       cancelText: "Hủy",
+      className:"confirm-tab2",
       onOk() {
         handleOk();
       },
@@ -231,10 +232,10 @@ function index() {
           style={{ padding: "0 50px", marginTop: 64 }}
         >
           <Tabs defaultActiveKey="1" onChange={callback}>
-          <TabPane tab="Mức thay đổi hàng năm" key="1">
+          <TabPane tab="Mức lương thấp nhất khi tham gia" key="1">
               <ModalUpdate />
             </TabPane>
-            <TabPane tab="Mức lương thấp nhất khi tham gia" key="2">
+            <TabPane tab="Mức thay đổi hàng năm " key="2">
               <p>(*): Giá trị hiện tại đã thiết lập</p>
               <Form
                 {...layout}
